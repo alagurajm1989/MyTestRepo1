@@ -1,6 +1,5 @@
 node {
     agent { dockerfile true }
-      stages {
         stage('Testing') {
            sshagent (['k8s-1']) {
               sh '''
@@ -11,5 +10,4 @@ node {
                '''
             }
         }
-      }
 }
