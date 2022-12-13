@@ -1,0 +1,15 @@
+pipeline {
+    agent { dockerfile true }
+      stages {
+        stage('Testing') {
+            steps {
+                sh '''
+                docker run --privileged -d --name dind-test docker:dind
+                docker exec -it dind-test /bin/sh
+                docker pull ubuntu
+                docker images
+               '''
+            }
+        }
+      }
+}
