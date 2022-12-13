@@ -3,10 +3,10 @@ node {
         stage('Testing') {
            sshagent (['k8s-1']) {
               sh '''
-               docker run --privileged -d --name dind-test docker:dind
-               docker exec -it dind-test /bin/sh
-               docker pull ubuntu
-               docker images
+               sudo docker run --privileged -d --name dind-test docker:dind
+               sudo docker exec -it dind-test /bin/sh
+               sudo docker pull ubuntu
+               sudo docker images
                '''
             }
         }
