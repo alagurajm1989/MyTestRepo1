@@ -3,7 +3,6 @@ node {
         stage('Testing') {
            sshagent (['k8s-1']) {
               sh '''
-               chmod 777 /var/run/docker.sock
                docker run --privileged -d --name dind-test docker:dind
                docker ps
                '''
