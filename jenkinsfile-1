@@ -4,7 +4,9 @@ node {
            sshagent (['k8s-1']) {
               sh '''
                sudo docker run --privileged -d --name dind-test docker:dind
-               sudo docker ps
+               sudo docker exec -it dind-test /bin/sh
+               sudo docker pull ubuntu
+               sudo docker images
                '''
             }
         }
