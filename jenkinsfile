@@ -1,7 +1,7 @@
 node {
     stage("GIT Clone"){
         
-        git branch: 'ca-test', credentialsId: 'GIT_CREDENTIALS', url: 'https://github.com/alagurajm1989/MyTestRepo1.git'
+        git branch: 'main', credentialsId: 'GIT_CREDENTIALS', url: 'https://github.com/alagurajm1989/MyTestRepo1.git'
         
     }
         stage('Run Docker') {
