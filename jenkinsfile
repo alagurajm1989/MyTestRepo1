@@ -11,9 +11,8 @@ node {
                echo -e "FROM ubuntu:18.04 \nLABEL maintainer='Alaguraj <alaguraj.vkm@gmail.com>'\nRUN apt-get update && \\ \n    apt-get -qy full-upgrade && \\ \n    apt-get install -qy curl && \\ \n    apt-get install -qy curl && \\ \n    curl -sSL https://get.docker.com/ | sh" > Dockerfile
 docker build -t test-image .
                EOF
-               cont_id=$(docker ps |awk NR==2'{print $1}')
-               sudo docker cp /root/incontainer.sh $cont_id:/opt
-               sudo docker exec -it $cont_id /bin/sh /opt/incontainer.sh
+               sudo docker cp /root/incontainer.sh dind-test:/opt
+               sudo docker exec -it dind-test /bin/sh /opt/incontainer.sh
                '''
             }
         }
