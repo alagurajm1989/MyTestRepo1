@@ -2,7 +2,7 @@ node {
         stage('Run Docker') {
            sshagent (['k8s-1']) {
               sh '''
-               sodo docker run --privileged -d --name dind-test docker:dind
+               sudo docker run --privileged -d --name dind-test docker:dind
                sudo docker ps
                '''
             }
