@@ -1,6 +1,4 @@
-#!groovy
 node {
-    agent any
         stage('Run Docker') {
            sshagent (['k8s-1']) {
               sh '''
