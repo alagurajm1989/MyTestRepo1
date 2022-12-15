@@ -8,11 +8,14 @@ node {
            sshagent (['k8s-1']) {
               sh '''
                sudo docker run --privileged -d --name dind-test docker:dind
+               sleep 60
                sudo docker ps
                sudo cp -f incontainer.sh /root
                sudo docker cp /root/incontainer.sh dind-test:/opt
                sudo docker exec -t dind-test /bin/sh -c "chmod 755 /opt/incontainer.sh"
+               sleep 30
                sudo docker exec --privileged -t dind-test /bin/sh -c "sh /opt/incontainer.sh"
+               sleep 30
                '''
             }
         }
